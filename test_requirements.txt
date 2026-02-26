@@ -1,0 +1,17 @@
+# test_requirements.txt - per-category build/run requirements
+# Read by Makefile to decide which tests to build for a given ARCH.
+# Format: category min_arch min_gpus
+#   min_arch: minimum compute capability (80 = sm_80 usual, 90 = sm_90 when required).
+#   min_gpus: minimum number of GPUs (e.g. 2 for multigpu). 1 = single GPU.
+# Add a new category here when adding new tests; set min_arch/min_gpus as needed.
+
+memcpy 80 1
+bulkcpy 90 1
+interkernel 80 1
+hostdevice 80 1
+asyncmemcpy 80 1
+intersubwarp 80 1
+dsmem 90 1
+multigpu 80 2
+false_positives 80 1
+interwave 80 1

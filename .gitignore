@@ -1,0 +1,7 @@
+# Build outputs
+*.out
+*.o
+
+# Reports (may contain machine-specific or user paths)
+compute_sanitizer_study_reports/
+*_reports/
