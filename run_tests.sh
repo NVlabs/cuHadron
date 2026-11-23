@@ -126,11 +126,15 @@ fi
 
 # Parse target first to determine what to build
 TARGET="${1:-all}"
+# A "|" that comes from a variable is literal in a case pattern, so `$CATEGORY_PATTERN)` never matched a category name;
+# match categories here and dispatch on CASE_TARGET.
+CASE_TARGET="$TARGET"
+for c in "${TEST_CATEGORIES[@]}"; do [ "$TARGET" = "$c" ] && CASE_TARGET="__category__"; done
 
 # Build only what's needed based on target
 echo -e "${YELLOW}Building tests...${NC}"
 
-case "$TARGET" in
+case "$CASE_TARGET" in
     all)
         if [ $REBUILD -eq 1 ] || ! ls "${TEST_CATEGORIES[0]}"/*.$BINARY_SUFFIX.out >/dev/null 2>&1; then
             echo "Building all tests (clean build)..."
@@ -144,7 +148,7 @@ case "$TARGET" in
             echo "All tests already built for $BINARY_SUFFIX"
         fi
         ;;
-    $CATEGORY_PATTERN)
+    __category__)
         echo "Building $TARGET tests..."
         # Clean only the target directory binaries if rebuild requested
         if [ $REBUILD -eq 1 ]; then
@@ -284,7 +288,7 @@ run_category() {
 # Run tests
 echo -e "${YELLOW}Running tests...${NC}"
 
-case "$TARGET" in
+case "$CASE_TARGET" in
     all)
         # Run all available tests
         for dir in "${TEST_CATEGORIES[@]}"; do
@@ -294,7 +298,7 @@ case "$TARGET" in
         done
         ;;
     
-    $CATEGORY_PATTERN)
+    __category__)
         run_category "$TARGET"
         ;;
     
