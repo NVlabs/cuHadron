@@ -53,8 +53,8 @@ FALSE_POSITIVE_CHECK_TESTS=(
 )
 
 # Category directories (must match test_requirements.txt and directory layout)
-TEST_CATEGORIES=(memcpy bulkcpy interkernel hostdevice asyncmemcpy intersubwarp dsmem multigpu false_positives interwave)
-CATEGORY_PATTERN="memcpy|bulkcpy|interkernel|hostdevice|asyncmemcpy|intersubwarp|dsmem|multigpu|false_positives|interwave"
+TEST_CATEGORIES=(memcpy bulkcpy interkernel hostdevice asyncmemcpy intersubwarp dsmem multigpu false_positives interwave scopedsync)
+CATEGORY_PATTERN="memcpy|bulkcpy|interkernel|hostdevice|asyncmemcpy|intersubwarp|dsmem|multigpu|false_positives|interwave|scopedsync"
 
 # Parse flags
 BASELINE=0
