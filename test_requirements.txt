@@ -30,3 +30,4 @@ dsmem 90 1
 multigpu 80 2
 false_positives 80 1
 interwave 80 1
+scopedsync 80 1

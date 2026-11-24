@@ -16,6 +16,7 @@ cuHadron is a benchmark suite for data races in CUDA programs. It leverages mode
 | `multigpu/` | Multi-GPU races (global memory) |
 | `false_positives/` | False positive checks (byte-level vs word-level) |
 | `interwave/` | Inter-wave races (e.g. blocks in different waves, global memory) |
+| `scopedsync/` | Scoped synchronization between thread blocks in global memory: flags, counters and locks missing a release, an acquire or a fence (PTX memory model) |
 
 ## Dependencies
 
@@ -161,4 +162,5 @@ Set **ARCH** (e.g. `ARCH=sm_80`, `ARCH=sm_100`) to build and run for a specific 
 ├── Makefile
 ├── run_tests.sh
 └── README.md
+├── scopedsync/             # Release/acquire and fence races between thread blocks (global memory)
 ```
